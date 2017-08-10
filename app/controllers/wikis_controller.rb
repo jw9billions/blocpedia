@@ -1,6 +1,10 @@
 class WikisController < ApplicationController
   before_action :require_sign_in, except: [:show, :index]
-  before_action :authorize_user, except: [:show, :new, :create]
+  before_action :authorize_user, except: [:index, :show, :new, :create]
+
+  def index
+    @wikis = Wiki.all
+  end
 
   def show
     @wiki = Wiki.find(params[:id])
