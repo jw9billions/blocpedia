@@ -34,6 +34,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.assign_attributes(wiki_params)
 
+    authorize @wiki
+    
     if @wiki.save
       flash[:notice] = "Wiki was updated"
       redirect_to @wiki
