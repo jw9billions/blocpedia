@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
          #, :confirmable
   has_many :wikis, dependent: :destroy
 
+  after_initialize do |user|
+    user.role = 'standard'
+  end
 
 end
