@@ -6,15 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.create!(
-  email: 'abc@email.com',
-  password: 'password'
-  role: 'admin'
-  )
+user = User.create([{
+  email: Faker::Internet.email,
+  password: Faker::Hacker.verb
+  }])
 
-wiki = Wiki.create!(
-  title: 'Fake Title',
-  body: 'Fake body',
-  private: true,
-  user: 3
-  )
+wiki = Wiki.create([{
+  title: Faker::Hacker.abbreviation,
+  body: Faker::Lorem.paragraphs(2..8),
+  private: true
+  }])
