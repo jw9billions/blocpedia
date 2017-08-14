@@ -13,6 +13,6 @@ user = User.create([{
 
 wiki = Wiki.create([{
   title: Faker::Hacker.abbreviation,
-  body: Faker::Lorem.paragraphs(2..8),
-  private: true
+  body: Faker::Lorem.paragraph,
+  private: Faker::Boolean.boolean
   }])
