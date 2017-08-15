@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'pages#welcome'
-  resources :wikis 
+  resources :wikis
+
+  resources :charges, only: [:new, :create]
   #get 'welcome#index'
   #get 'welcome/about'
 

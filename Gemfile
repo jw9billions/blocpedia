@@ -34,10 +34,17 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# add roles for use as standard, premium or admin
 gem "pundit"
 
 # seeds data with Faker gem
 gem 'faker'
+
+# add feature to charge users
+gem 'stripe'
+
+# enviorment variables with Figaro
+ gem 'figaro', '1.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
