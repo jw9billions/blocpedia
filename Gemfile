@@ -36,16 +36,12 @@ gem 'devise'
 
 gem "pundit"
 
+# seeds data with Faker gem
+gem 'faker'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
-=begin
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
-=end
-
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
