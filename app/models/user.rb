@@ -6,10 +6,10 @@ class User < ActiveRecord::Base
          #, :confirmable
   has_many :wikis, dependent: :destroy
 
-=begin
+
   after_initialize do |user|
     user.role = 'standard'
   end
-=end
+
 
 end
