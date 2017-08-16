@@ -14,10 +14,6 @@ class User < ActiveRecord::Base
   def premium
     self.role == 'premium' ?
   end
-
-  def admin
-    self.role == 'admin' ?
-  end
 =end
 
 end
