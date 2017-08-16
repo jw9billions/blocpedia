@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :wikis
 
   resources :charges, only: [:new, :create]
+  post '/membership' => 'charges#membership'
   #get 'welcome#index'
   #get 'welcome/about'
 
