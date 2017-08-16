@@ -40,11 +40,6 @@ gem "pundit"
 # seeds data with Faker gem
 gem 'faker'
 
-# add feature to charge users
-gem 'stripe'
-
-# enviorment variables with Figaro
- gem 'figaro', '1.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
