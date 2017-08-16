@@ -22,6 +22,17 @@ class ChargesController < ApplicationController
       redirect_to new_charge_path
   end
 
+  def downgrade
+    current_user = User.find(params[:stripeToken])
+    current_user.params[:stripeToken] = nil
+    current_user[:customer][:amount] = nil
+
+    if current_user.save
+      flash[:notice] = "You stopped the Membership"
+      redirect_to new_charge_path
+    end
+  end
+
   def new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",

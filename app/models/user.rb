@@ -10,6 +10,14 @@ class User < ActiveRecord::Base
   after_initialize do |user|
     user.role = 'standard'
   end
+
+  def premium
+    self.role == 'premium' ?
+  end
+
+  def admin
+    self.role == 'admin' ?
+  end
 =end
 
 end
