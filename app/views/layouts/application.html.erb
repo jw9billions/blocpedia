@@ -11,6 +11,9 @@
     Signed in as: <strong><%= current_user.email %></strong> |
     <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> -
     <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    <% if current_user.params[:stripeToken] %>
+      <%= link_to "Cancel Membership", downgrade_users_controller_path, method: :put, :class => 'navbar-link' %>
+    <% end %>
   <% else %>
     <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
     <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
