@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          #, :confirmable
   has_many :wikis, dependent: :destroy
+  enum role: [:standard, :premium, :admin]
 
 =begin
   after_initialize do |user|
