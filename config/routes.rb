@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :wikis
 
   resources :charges, only: [:new, :create]
-  post '/membership' => 'charges#membership'
+  #put 'users/cancel_membership', to: 'users#controller'
   #get 'welcome#index'
   #get 'welcome/about'
 
