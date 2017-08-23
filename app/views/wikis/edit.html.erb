@@ -13,4 +13,7 @@
   <div class="col-md-8">
     <%= render partial: 'form', locals: { wiki: @wiki } %>
   </div>
+  <% if policy(@wiki).update? %>
+    <%= link_to "Edit wiki", edit_wiki_path(@wiki) %>
+  <% end %>
 </div>

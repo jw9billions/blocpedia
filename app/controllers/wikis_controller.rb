@@ -1,6 +1,7 @@
 class WikisController < ApplicationController
   before_action :require_sign_in, except: [:show, :index]
   before_action :authorize_user, except: [:index, :show, :new, :create]
+  # before_action :authorize_user, only: [:edit, :destroy, :update]
 
   def index
     @wikis = Wiki.all
@@ -19,6 +20,7 @@ class WikisController < ApplicationController
     @wiki.user = current_user
     if @wiki.save
       flash[:notice] = "Your wiki was saved!"
+      @wiki.user.role = 'standard'
       redirect_to @wiki
     else
       flash.now[:alert] = "There is an error saving the wiki. Please try again."
@@ -28,6 +30,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def update
@@ -35,7 +38,7 @@ class WikisController < ApplicationController
     @wiki.assign_attributes(wiki_params)
 
     authorize @wiki
-    
+
     if @wiki.save
       flash[:notice] = "Wiki was updated"
       redirect_to @wiki
@@ -48,6 +51,7 @@ class WikisController < ApplicationController
   def destroy
     @wiki = Wiki.find(params[:id])
 
+    authorize @wiki
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
       redirect_to @wiki
