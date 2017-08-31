@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   enum role: [:standard, :premium, :admin]
 
 =begin
-  after_initialize do |user|
-    user.role = 'standard'
+  after_initialize do
+    user.role.standard!
   end
 
   def premium

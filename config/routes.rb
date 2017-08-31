@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'pages/welcome'
 
   devise_for :users
-  root to: 'pages#welcome'
+  root to: 'users/sign_up'
   resources :wikis
 
   resources :charges, only: [:new, :create]
