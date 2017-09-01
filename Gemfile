@@ -34,11 +34,19 @@ gem 'devise'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Bootstrap to style site
+gem 'bootstrap-sass'
 # add roles for use as standard, premium or admin
 gem "pundit"
+#Stripe for payment processing
+gem 'stripe'
+#Redcarpet for markdown text
+gem 'redcarpet'
 
 # seeds data with Faker gem
 gem 'faker'
+ # Figaro to handle sensitive data
+gem 'figaro', '1.0'
 
 
 group :development, :test do
