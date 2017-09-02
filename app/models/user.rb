@@ -7,11 +7,13 @@ class User < ActiveRecord::Base
   has_many :wikis, dependent: :destroy
   enum role: [:standard, :premium, :admin]
 
-=begin
-  after_initialize do
-    user.role.standard!
+  after_initialize :set_as_standard
+
+  def set_as_standard
+    self.role.standard!
   end
 
+=begin
   def premium
     self.role == 'premium' ?
   end

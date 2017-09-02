@@ -1,7 +1,29 @@
 <h1>Wikis</h1>
+<div class="row">
+  <div class="col-md-8">
+    <% @wikis.each do |wiki| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-heading">
+            <% if wiki.private? %>
+              <%= link_to markdown(wiki.title), wiki, class: 'private' %><small>[private]</small>
+            <% else %>
+              <%= link_to markdown(wiki.title), wiki %>
+            <% end %>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class = "col-md-4">
+    <% link_to "New Wiki", new_wiki_path, class: "btn btn_success" %>
+  </div>
+</div>
+
 
 
 <% @wikis.each do |wiki| %>
-  <li><%= wiki.title %></li>
-  <li><%= wiki.body %></li>
+  <li><%= markdown(wiki.title) %></li>
+  <li><%= markdown(wiki.body) %></li>
 <% end %>
