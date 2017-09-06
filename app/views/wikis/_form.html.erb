@@ -1,22 +1,13 @@
 <%= form_for wiki do |f| %>
-  <% if wiki.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(wiki.errors.count, "error") %>.</h4>
-      <ul>
-        <% wiki.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= form_group_tag(wiki.errors[:title]) do %>
+
+  <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: "Enter wiki title" %>
-  <% end %>
-  <%= form_group_tag(wiki.errors[:body]) do %>
+  </div>
+  <div class="form-group">
     <%= f.label :body %>
-    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
-  <% end %>
+    <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter wiki body" %>
+  </div>
   <% if current_user.admin? || current_user.premium? %>
     <div class="form-group">
       <%= f.label :private, class: 'checkbox' do %>
@@ -27,4 +18,5 @@
   <div class="form-group">
     <%= f.submit "Save", class: 'btn btn-success' %>
   </div>
+
 <% end %>

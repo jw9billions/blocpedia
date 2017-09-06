@@ -13,4 +13,15 @@
   <div class="col-md-8">
     <%= render partial: 'form', locals: { wiki: @wiki } %>
   </div>
+
+  <div>
+    <p>Add Collaborators</p>
+      <% if current_user.id == @wiki.user_id || current_user.admin? %>
+        <%= collection_check_boxes(:wiki, User.all) do |bx| %>
+            <%= bx.check_box %>
+            <%= bx.label %><br />
+        <% end %>
+      <% end %>
+  </div>
+
 </div>

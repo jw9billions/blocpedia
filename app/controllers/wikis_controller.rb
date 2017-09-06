@@ -3,19 +3,22 @@ class WikisController < ApplicationController
   before_action :authorize_user, except: [:index, :show, :new, :create]
 
   def index
-    #@wikis = Wiki.all
     authorize(Wiki)
-    @wikis = wikiPolicy.scope(Wiki)
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
     authorize @wiki
+
+    if @wiki[:private] && current_user.standard?
+      flash [:notice] = "Please upgrade to premium user to view this Wiki."
+      redirect_to wikis_path
+    end
   end
 
   def new
     @wiki = Wiki.new
-    authorize @wiki
   end
 
   def create
