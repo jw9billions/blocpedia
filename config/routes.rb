@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'pages/welcome'
 
   devise_for :users
-  root to: 'users/sign_up'
+  root to: 'pages#welcome'
 
   resources :wikis do
     resources :collaborators, only: [:new, :create, :update, :destroy]

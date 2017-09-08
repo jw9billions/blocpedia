@@ -12,7 +12,7 @@ class Wiki < ActiveRecord::Base
   private
 
   def initialize_role
-    self.private = false if (user.role == 'standard')
+    #self.private = false if (self.user.role == 'standard')
   end
 
   default_scope {order('created_at DESC')}

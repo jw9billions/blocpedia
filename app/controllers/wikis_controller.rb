@@ -1,5 +1,5 @@
 class WikisController < ApplicationController
-  before_action :require_sign_in, except: [:show, :index]
+  #before_action :require_sign_in, except: [:show, :index]
   before_action :authorize_user, except: [:index, :show, :new, :create]
 
   def index
@@ -12,7 +12,7 @@ class WikisController < ApplicationController
     authorize @wiki
 
     if @wiki[:private] && current_user.standard?
-      flash [:notice] = "Please upgrade to premium user to view this Wiki."
+      flash[:notice] = "Please upgrade to premium user to view this Wiki."
       redirect_to wikis_path
     end
   end
@@ -22,14 +22,14 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = wiki.build(wiki_params)
+    @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     if @wiki.save
       flash[:notice] = "Your wiki was saved!"
       redirect_to @wiki
     else
       flash.now[:alert] = "There is an error saving the wiki. Please try again."
-      render :new
+      #render :new
     end
   end
 

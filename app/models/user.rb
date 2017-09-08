@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   after_initialize :set_as_standard
 
   def set_as_standard
-    self.role.standard!
+    self.role ||= :standard
+    #self.role.standard!
   end
 
 

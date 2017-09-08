@@ -1,4 +1,4 @@
-class wikiPolicy < ApplicationPolicy
+class WikiPolicy < ApplicationPolicy
   attr_reader :user, :wiki
 
   def initialize(user, wiki)
@@ -47,7 +47,7 @@ class wikiPolicy < ApplicationPolicy
            end
          end
        else # standard
-         all_wikis = scope.all?
+         all_wikis = scope.all
          wikis = []
          all_wikis.each do |wiki|
            if !wiki[:private] || wiki.collaborators.include?(user)
