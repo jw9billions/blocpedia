@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
     #self.role.standard!
   end
 
+  def collaborator?(wiki)
+	  self.collaborators.where(wiki: wiki).present?
+  end
 
 =begin
   def premium
