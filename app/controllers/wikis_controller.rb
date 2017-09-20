@@ -22,7 +22,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    
+
     #@wiki = wikis.build(wiki_params)
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
@@ -31,7 +31,7 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash.now[:alert] = "There is an error saving the wiki. Please try again."
-      #render :new
+      render :new
     end
   end
 

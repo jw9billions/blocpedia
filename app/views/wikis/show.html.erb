@@ -1,9 +1,9 @@
 <div>
-  <%= #render partial: 'wiki', locals: {wiki: @wiki} %>
+  <%= render partial: 'wiki', locals: {wiki: @wiki} %>
   <h1>
     <%= markdown(@wiki.title) %> <br>
     <small>
-      submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= @wiki.user.name %>
+      submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= @wiki.user.email %>
     </small>
   </h1>
 </div>
@@ -18,4 +18,9 @@
        <%= link_to "Delete Wiki", @wiki, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %>
      </div>
   <% end %>
+  <div class = 'col-md-4'>
+    <% if current_user %>
+       <%= render partial: 'collaborators/collaborator', locals: { wiki: @wiki } %>
+    <% end %>
+  </div>
 </div>

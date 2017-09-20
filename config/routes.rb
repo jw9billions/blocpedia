@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
+  resources :wikis
+  root to: 'pages#welcome'
   get 'pages/welcome'
 
   devise_for :users
-  root to: 'pages#welcome'
+  
 
-  resources :wikis do
-    resources :collaborators, only: [:new, :create, :update, :destroy]
-  end
+  # resources :wikis, only: [] do
+  #   resources :collaborators, only: [:create, :destroy]
+  # end
 
   resources :charges, only: [:new, :create]
   put 'users/cancel_membership', to: 'userdowngrade#downgrade'
+
+end
   #get 'welcome#index'
   #get 'welcome/about'
 
@@ -67,4 +71,3 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

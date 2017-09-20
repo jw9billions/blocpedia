@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
     #self.role.standard!
   end
 
-  def collaborator?(wiki)
-	  self.collaborators.where(wiki: wiki).present?
+  def collaborator_for(wiki)
+	  collaborators.where(wiki_id: wiki.id)
   end
 
 =begin
