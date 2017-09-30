@@ -7,13 +7,36 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-user = User.create({
-  email: Faker::Internet.email,
-  password: Faker::Hacker.verb
-  })
+User.create!(
+  email: 'member@blocipedia.com',
+  password: 'helloworld',
+)
 
-wiki = Wiki.create({
-  title: Faker::Hacker.abbreviation,
-  body: Faker::Lorem.paragraph,
-  private: Faker::Boolean.boolean
-  })
+admin = User.create!(
+   email:    'admin@example.com',
+   password: 'helloworld',
+)
+admin.role = :admin
+
+5.times do
+  User.create!(
+    email:    Faker::Internet.email,
+    password: Faker::Internet.password(8),
+  )
+end
+users = User.all
+
+#Create Wikis
+
+20.times do
+  Wiki.create!(
+    title: Faker::Commerce.product_name,
+    body: Faker::Company.catch_phrase,
+    user: users.sample
+  )
+end
+wikis = Wiki.all
+
+puts "Seed finished"
+puts "#{User.count} users created"
+puts "#{Wiki.count} wikis created"

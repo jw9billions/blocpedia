@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   get 'pages/welcome'
+  #get 'pages/about'
 
   devise_for :users
   root to: 'pages#welcome'
+  get 'pages/about'
+  
 
   resources :wikis
   # resources :wikis, only: [] do

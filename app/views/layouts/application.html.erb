@@ -8,16 +8,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="jumbotron">
   <div class = "container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Blocpedia", root_path, class: 'navbar-link' %></li>
       <li><% if current_user.present? %>
         <li><%= link_to "Wikis", wikis_path, class: 'navbar-link'%></li>
       <li><% end %>
-      <li><%= link_to "Users", user_registration_path %></li>
+      <li><%= link_to "Home", pages_welcome_path, class: 'navbar-link' %></li>
+      <li><%= link_to "About", pages_about_path, class: 'navbar-link'%></li>
       <div class="user-info pull-right">
         <% if user_signed_in? %>
           <div class = "pull-right">
+              <p></p>
               Signed in as: <strong><%= current_user.email %></strong> |
               <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> -
               <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
@@ -38,5 +40,6 @@
 
     <%= yield %>
   </div>
+</div>
 </body>
 </html>

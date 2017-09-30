@@ -48,7 +48,6 @@ gem 'faker'
  # Figaro to handle sensitive data
 gem 'figaro', '1.0'
 
-
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
