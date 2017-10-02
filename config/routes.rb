@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#welcome'
   get 'pages/about'
-  
 
   resources :wikis
   # resources :wikis, only: [] do
@@ -14,8 +13,8 @@ Rails.application.routes.draw do
 
   resources :charges, only: [:new, :create]
   put 'users/cancel_membership', to: 'userdowngrade#downgrade'
-  #get 'welcome#index'
-  #get 'welcome/about'
+
+  resources :collaborators#, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

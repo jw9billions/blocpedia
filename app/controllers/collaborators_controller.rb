@@ -1,5 +1,8 @@
 class CollaboratorsController < ApplicationController
-  before_action :require_sign_in
+  #before_action :require_sign_in
+
+  def index
+  end
 
   def create
     wiki = Wiki.find(params[:wiki_id])
@@ -10,13 +13,13 @@ class CollaboratorsController < ApplicationController
     else
        flash[:alert] = "collaborating failed."
     end
-    
+
     redirect_to wiki
   end
 
   def destroy
     wiki = Wiki.find(params[:wiki_id])
-    favorite = current_user.favorites.find(params[:id])
+    collaborator = current_user.collaborators.find(params[:id])
 
     if collaborator.destroy
       flash[:notice] = "Wiki uncollaborated."

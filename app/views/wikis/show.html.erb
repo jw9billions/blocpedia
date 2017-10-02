@@ -2,10 +2,11 @@
   <%= render partial: 'wiki', locals: {wiki: @wiki} %>
   <h1>
     <%= markdown(@wiki.title) %> <br>
+  </h1>
     <small>
       submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= @wiki.user.email %>
     </small>
-  </h1>
+
 </div>
 
 <div class="row">
