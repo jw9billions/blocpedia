@@ -15,7 +15,7 @@ class WikiPolicy < ApplicationPolicy
    end
 
    def edit?
-     update? # user.present? || user.admin? || wiki.user_id == user.id || user.collaborator?(wiki)
+     update? || user.admin?# user.present? || user.admin? || wiki.user_id == user.id || user.collaborator?(wiki)
    end
 
    def destroy?
