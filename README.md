@@ -1,30 +1,23 @@
-== README
-I made this app with my mentor Alex Spencer at [Bloc](http://bloc.io) together. Many thanks for his help!
+A CRUD app, a Wikipedia replica, which allows users to create public and private Markdown-based wikis. It allows users to collaborate on wikis, and select either standard or premium role.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Tools: Ruby on Rails.
+Demo: https://stormy-hamlet-76662.herokuapp.com/
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Features:
+1. The app allows users to sign up for a free account by providing a user name, password and email.
+2. It allows users to sign in and out of Blocipedia.
+3. A user with a standard account, can create, read, update, and delete public wikis.
+4. It offers three user roles: admin, standard, or premium.
+5. It updates database automatically with users and wikis.
+6. It allows users to upgrade my account from a free to a paid plan.
+7. A premium user can create private wikis.
+8. A user can edit wikis using Markdown syntax.
+9. A premium user can add and remove collaborators for my private wikis
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-# blocpedia
+Some things I learned in the Blocipedia project include how to:
+
+* incorporate the Devise user gem into a Rails project to require users to verify their email when creating an account
+* incorporate a Stripe account for processing payment information to upgrade from a standard to premium user
+* build rules that allow only certain users to view and edit certain wikis
+* utilize the Redcarpet gem so wikis on the site parse Markdown syntax.
